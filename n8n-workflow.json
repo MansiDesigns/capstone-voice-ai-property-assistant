@@ -1,0 +1,74 @@
+{
+  "name": "Property Shortlist PDF and Email Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "shortlist",
+        "options": {}
+      },
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        250,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const properties = $input.item.json.body.shortlist || [];\n\nlet html = `<h1>Your Property Shortlist</h1>`;\nhtml += `<table border=\"1\" cellpadding=\"10\" style=\"border-collapse: collapse;\">`;\nhtml += `<tr><th>Property ID</th><th>Society</th><th>Rent</th><th>BHK</th><th>SqFt</th></tr>`;\n\nfor (const p of properties) {\n  html += `<tr>`;\n  html += `<td>${p.id || 'N/A'}</td>`;\n  html += `<td>${p.society || 'N/A'}</td>`;\n  html += `<td>₹${p.rent_amount || 'N/A'}</td>`;\n  html += `<td>${p.bhk || 'N/A'}</td>`;\n  html += `<td>${p.sqft || 'N/A'}</td>`;\n  html += `</tr>`;\n}\nhtml += `</table>`;\n\nreturn { json: { html: html, email: $input.item.json.body.email || 'user@example.com' } };"
+      },
+      "name": "Format to HTML",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        450,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "fromEmail": "assistant@property-ai.com",
+        "toEmail": "={{$json[\"email\"]}}",
+        "subject": "Your Curated Property Shortlist",
+        "html": "={{$json[\"html\"]}}",
+        "options": {}
+      },
+      "name": "Send Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2,
+      "position": [
+        650,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Format to HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format to HTML": {
+      "main": [
+        [
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "versionId": "f9b4c730-8a27-4a00-ab64-5a21dbf1a8c3"
+}

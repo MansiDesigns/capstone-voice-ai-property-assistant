@@ -1,0 +1,650 @@
+<!DOCTYPE html><html class="h-full" lang="en" style="" data-lt-installed="true"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><title>Scout - Accessible AI Property Discovery</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-container-highest":"#d5e3fd","on-secondary-container":"#fffbff","inverse-primary":"#bcc7de","on-primary-container":"#8590a6","outline":"#75777d","secondary":"#1d4ed8","tertiary-container":"#003013","on-background":"#0d1c2f","inverse-surface":"#233144","tertiary":"#001907","surface":"#f8f9ff","on-secondary":"#ffffff","surface-variant":"#d5e3fd","tertiary-fixed-dim":"#8bd79b","tertiary-fixed":"#a6f4b5","on-tertiary":"#ffffff","surface-container-low":"#eff4ff","outline-variant":"#c5c6cd","on-surface":"#0d1c2f","on-tertiary-container":"#559f67","surface-bright":"#f8f9ff","error":"#ba1a1a","on-tertiary-fixed-variant":"#005226","primary-container":"#1e293b","on-surface-variant":"#45474c","surface-container":"#e6eeff","secondary-container":"#4069f2","primary-fixed":"#d8e3fb","on-error-container":"#93000a","on-error":"#ffffff","surface-container-high":"#dde9ff","surface-tint":"#545f73","on-secondary-fixed":"#001551","secondary-fixed":"#dce1ff","primary":"#091426","on-primary":"#ffffff","on-primary-fixed":"#111c2d","secondary-fixed-dim":"#b7c4ff","on-secondary-fixed-variant":"#0039b5","error-container":"#ffdad6","primary-fixed-dim":"#bcc7de","on-tertiary-fixed":"#00210b","surface-dim":"#ccdbf4","background":"#f8f9ff","inverse-on-surface":"#ebf1ff","surface-container-lowest":"#ffffff","on-primary-fixed-variant":"#3c475a"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"touch-cushion":"8px","space-xs":"0.5rem","space-lg":"1.5rem","margin-desktop":"2rem","space-2xs":"0.25rem","target-min":"44px","space-md":"1rem","gutter-mobile":"1rem","space-xl":"2rem","margin-mobile":"1rem","space-2xl":"3rem","gutter-desktop":"1.5rem","space-sm":"0.75rem"},fontFamily:{"headline-lg-mobile":["Inter"],"label-md":["Inter"],"headline-md":["Inter"],"headline-lg":["Inter"],"body-bold":["Inter"],"display":["Inter"],"label-sm":["Inter"],"body-lg":["Inter"],"headline-sm":["Inter"],"display-mobile":["Inter"],"body-md":["Inter"]},fontSize:{"headline-lg-mobile":["26px",{"lineHeight":"36px","letterSpacing":"0em","fontWeight":"700"}],"label-md":["14px",{"lineHeight":"22px","letterSpacing":"0.01em","fontWeight":"600"}],"headline-md":["24px",{"lineHeight":"36px","letterSpacing":"0em","fontWeight":"600"}],"headline-lg":["32px",{"lineHeight":"44px","letterSpacing":"-0.01em","fontWeight":"700"}],"body-bold":["16px",{"lineHeight":"26px","letterSpacing":"0em","fontWeight":"600"}],"display":["40px",{"lineHeight":"52px","letterSpacing":"-0.02em","fontWeight":"700"}],"label-sm":["13px",{"lineHeight":"20px","letterSpacing":"0.02em","fontWeight":"600"}],"body-lg":["18px",{"lineHeight":"28px","letterSpacing":"0em","fontWeight":"400"}],"headline-sm":["20px",{"lineHeight":"30px","letterSpacing":"0em","fontWeight":"600"}],"display-mobile":["30px",{"lineHeight":"40px","letterSpacing":"-0.01em","fontWeight":"700"}],"body-md":["16px",{"lineHeight":"26px","letterSpacing":"0em","fontWeight":"400"}]}}}}</script></head><body class="bg-background font-body-md text-body-md text-on-surface antialiased min-h-screen"><a class="sr-only focus:not-sr-only focus:fixed focus:top-space-xs focus:left-space-xs focus:z-50 focus:px-space-md focus:py-space-xs focus:bg-secondary focus:text-on-secondary focus:font-body-bold focus:text-body-bold focus:rounded focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary" href="#main-content">Skip to main content</a><header class="fixed top-0 left-0 right-0 h-20 bg-surface-container-lowest z-40 border-b border-outline-variant" role="banner"><div class="h-20 w-full px-margin-desktop flex items-center justify-between gap-space-md"><div class="flex-1 max-w-xl mx-auto"><form class="relative flex items-center" role="search"><label class="sr-only" for="global-voice-search">Search properties by text or voice command</label><div class="relative w-full flex items-center"><span aria-hidden="true" class="material-symbols-outlined absolute left-3 text-on-surface-variant pointer-events-none">search</span><input class="w-full h-12 pl-10 pr-12 rounded-xl bg-surface-container-low border border-outline-variant text-on-surface font-body-md text-body-md placeholder:text-on-surface-variant focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary focus:bg-surface-container-lowest transition-colors" id="global-voice-search" placeholder="Search city, ZIP, or say 'Find accessible 2-beds'" type="search"><button aria-label="Activate voice assistant: Scouting properties via voice" class="absolute right-1 w-10 h-10 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-secondary hover:bg-surface-container focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary" type="button"><span aria-hidden="true" class="material-symbols-outlined">mic</span></button></div></form></div><div class="flex items-center gap-space-sm shrink-0"><div class="flex items-center gap-space-xs"><button aria-label="User account and settings" class="min-h-target-min min-w-target-min p-space-2xs rounded-full focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary flex items-center gap-2" type="button"><img alt="Profile" class="w-8 h-8 rounded-full object-cover border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9YraE_3Qfad1Hy4qy3NWNda57GI9mocf7vLz6nWKfZqiCzaOSRsHhuvyz6k9Lt_gkn70WcpmK5aW5cf9sx_5phGiWTWmFGtDAWqaBnKdStlEcdXLi0MjvRQw-qNi6XmTiDO8cLmvkaVix1Qwvzq15QOtOFCMtpDrkfF4Rr-i6Qdne5MjytLmqr25pht2V4XX0OOoh9sZ7c6AjpxMRhhd4b1Bt1_WIoncItrZj8DeTDgb1DXPRzL38Mg"><span class="hidden md:inline font-body-bold text-body-bold text-on-surface">Patel E.</span></button></div></div></div></header><aside class="fixed left-0 top-20 bottom-0 w-72 bg-surface-container-lowest border-r border-outline-variant z-30 flex flex-col justify-between p-space-md"><div class="flex flex-col gap-space-sm"><p class="px-space-sm font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Navigation</p><nav aria-label="Main Navigation" class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-secondary-container font-body-bold"><a aria-current="page" class="min-h-target-min flex items-center justify-between px-space-md py-space-xs rounded-xl focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary transition-colors bg-primary-container text-on-secondary-container font-body-bold" data-path="discover-homes" href="#"><div class="flex items-center gap-space-sm"><span aria-hidden="true" class="material-symbols-outlined text-[22px]">real_estate_agent</span><span class="font-body-md text-body-md">Discover Homes</span></div><span class="sr-only">Current page</span></a><a class="min-h-target-min flex items-center justify-between px-space-md py-space-xs rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary transition-colors" data-path="shortlist-and-saved" href="#"><div class="flex items-center gap-space-sm"><span aria-hidden="true" class="material-symbols-outlined text-[22px]">favorite</span><span class="font-body-md text-body-md">Shortlist &amp; Saved</span></div><span aria-label="3 items saved" class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm">3</span></a><a class="min-h-target-min flex items-center justify-between px-space-md py-space-xs rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary transition-colors" data-path="booked-visits" href="#"><div class="flex items-center gap-space-sm"><span aria-hidden="true" class="material-symbols-outlined text-[22px]">calendar_month</span><span class="font-body-md text-body-md">Booked Visits</span></div><span aria-label="1 upcoming visit" class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm">1</span></a><a class="min-h-target-min flex items-center justify-between px-space-md py-space-xs rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary transition-colors" data-path="neighborhood-explorer" href="#"><div class="flex items-center gap-space-sm"><span aria-hidden="true" class="material-symbols-outlined text-[22px]">explore</span><span class="font-body-md text-body-md">Neighborhood Explorer</span></div></a><a class="min-h-target-min flex items-center justify-between px-space-md py-space-xs rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary transition-colors" data-path="accessibility-preferences" href="#"><div class="flex items-center gap-space-sm"><span aria-hidden="true" class="material-symbols-outlined text-[22px]">accessibility_new</span><span class="font-body-md text-body-md">Accessibility Preferences</span></div></a></nav></div><div class="p-space-sm rounded-xl bg-surface-container-low border border-outline-variant"><div class="flex items-center gap-space-xs mb-space-2xs"><span aria-hidden="true" class="material-symbols-outlined text-secondary text-[20px]">support_agent</span><span class="font-body-bold text-body-bold text-on-surface">Voice Guidance</span></div><p class="font-label-sm text-label-sm text-on-surface-variant">Say "Help Scout" or press Alt + V to toggle voice mode anytime.</p></div></aside><div class="pl-72"><main class="relative pt-20 min-h-screen bg-background focus:outline-none" id="main-content" tabindex="-1"><div class="flex flex-col w-full">
+<div class="w-full max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-space-lg flex flex-col gap-space-xl">
+<!-- TOP SECTION: LIVE VOICE & INPUT COMMAND BAR -->
+<section aria-labelledby="voice-command-title" class="w-full bg-surface-container-lowest rounded-xl shadow-md p-space-md md:p-space-lg flex flex-col gap-space-md">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm pb-space-sm border-b border-outline-variant">
+<div>
+<h1 class="font-headline-md text-headline-md text-on-surface font-bold" id="voice-command-title">
+            Property Voice Command &amp; Accessible Search
+          </h1>
+
+</div>
+<!-- Real-time Voice State Indicator -->
+<div aria-label="System status" class="flex items-center gap-space-xs self-start md:self-auto bg-surface-container-low px-space-md py-space-2xs rounded-full">
+<span aria-hidden="true" class="relative flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75 hidden" id="status-pulse"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-secondary" id="status-dot"></span>
+</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold" id="voice-engine-status">Voice Engine: Ready</span>
+</div>
+</div>
+<!-- Live Voice Announcement Region -->
+<div aria-atomic="true" aria-live="polite" class="sr-only" id="voice-screenreader-feedback">
+        Voice command engine ready. Search homes using voice or keyboard input.
+      </div>
+<!-- Controls: Mic + Text Search -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md items-end">
+<!-- Voice Action Button Box -->
+<div class="lg:col-span-4 flex flex-col gap-space-2xs">
+<span class="font-label-md text-label-md text-on-surface font-semibold" id="voice-btn-helper">
+            Voice Assistant Control
+          </span>
+<button aria-describedby="voice-btn-helper" aria-pressed="false" class="min-h-target-min h-12 w-full px-space-md rounded-lg bg-secondary text-on-secondary hover:bg-primary-container focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary font-body-bold text-body-bold flex items-center justify-center gap-space-xs transition-colors shadow-sm" id="mic-toggle-btn" type="button">
+<span aria-hidden="true" class="material-symbols-outlined text-[24px]" id="mic-icon">mic</span>
+<span id="mic-label" class="">Start speaking query</span>
+</button>
+</div>
+<!-- Text Input Search Box -->
+<div class="lg:col-span-8 flex flex-col gap-space-2xs">
+<label class="font-label-md text-label-md text-on-surface font-semibold" for="direct-property-input">
+            Search properties by voice or typing
+          </label>
+<div class="flex flex-col sm:flex-row gap-space-xs">
+<input class="flex-1 min-h-target-min h-12 px-space-md rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md placeholder:text-on-surface-variant focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary border border-outline-variant" id="direct-property-input" type="text" value="I need a 2BHK near Indiranagar under ₹45,000 with lift and reserved parking">
+<button class="min-h-target-min h-12 px-space-lg rounded-lg bg-primary-container text-on-primary hover:bg-primary focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary font-body-bold text-body-bold shrink-0 flex items-center justify-center gap-space-2xs shadow-sm transition-colors" id="submit-search-btn" type="button">
+<span aria-hidden="true" class="material-symbols-outlined text-[20px]">search</span>
+<span class="">Search Properties</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Live Transcript Card -->
+<section aria-label="Current Voice Session Transcript" class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-2xs">
+<span aria-hidden="true" class="material-symbols-outlined text-secondary text-[22px]">record_voice_over</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Active Speech Transcript</h2>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface font-label-sm text-label-sm">
+            Audio Stream Synchronized
+          </span>
+</div>
+<div class="space-y-space-xs text-body-md font-body-md">
+<div class="p-space-xs rounded-lg bg-surface-container-lowest">
+<span class="font-body-bold text-body-bold text-secondary">YOU:</span>
+<span class="text-on-surface ml-1">“Find accessible 2BHKs with step-free entrance and elevator in Indiranagar under ₹45,000”</span>
+</div>
+<div class="p-space-xs rounded-lg bg-surface-container-lowest">
+<span class="font-body-bold text-body-bold text-on-tertiary-container">SCOUT AI:</span>
+<span class="text-on-surface ml-1">“Found 4 matching homes with verified step-free access, dual lifts, and under-budget options in Indiranagar.”</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-space-xs pt-space-2xs">
+<button class="min-h-target-min px-space-sm py-space-2xs rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high font-label-md text-label-md focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary flex items-center gap-1 transition-colors" onclick="document.getElementById('direct-property-input').focus();" type="button">
+<span aria-hidden="true" class="material-symbols-outlined text-[18px]">edit_note</span>
+<span class="">Edit request in text</span>
+</button>
+<button class="min-h-target-min px-space-sm py-space-2xs rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high font-label-md text-label-md focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary flex items-center gap-1 transition-colors" onclick="clearTranscript();" type="button">
+<span aria-hidden="true" class="material-symbols-outlined text-[18px]">delete_sweep</span>
+<span class="">Clear transcript</span>
+</button>
+<button class="min-h-target-min px-space-sm py-space-2xs rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high font-label-md text-label-md focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary flex items-center gap-1 transition-colors" onclick="simulateVoicePrompt();" type="button">
+<span aria-hidden="true" class="material-symbols-outlined text-[18px]">replay</span>
+<span class="">Retry voice input</span>
+</button>
+</div>
+</section>
+</section>
+<!-- SECTION 2: FILTER & ACCESSIBILITY CONTROLS TOOLBAR -->
+<section aria-labelledby="filter-section-heading" class="w-full bg-surface-container-lowest rounded-xl shadow-md p-space-md md:p-space-lg flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold" id="filter-section-heading">
+          Accessibility Toolbar &amp; Search Constraints
+        </h2>
+<div class="flex items-center gap-space-xs">
+<button class="min-h-target-min px-space-md py-space-2xs rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary flex items-center gap-1 transition-colors" id="reset-filter-btn" type="button">
+<span aria-hidden="true" class="material-symbols-outlined text-[18px]">restart_alt</span>
+<span class="">Reset Filters</span>
+</button>
+<button class="min-h-target-min px-space-md py-space-2xs rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary flex items-center gap-1 transition-colors" id="undo-filter-btn" type="button">
+<span aria-hidden="true" class="material-symbols-outlined text-[18px]">undo</span>
+<span class="">Undo Last Change</span>
+</button>
+</div>
+</div>
+<!-- Filter Controls Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-space-md">
+<!-- Budget Filter -->
+<fieldset class="lg:col-span-4 p-0 m-0 border-0 flex flex-col gap-space-xs">
+<legend class="font-label-md text-label-md text-on-surface font-semibold mb-space-2xs">
+            Monthly Budget Range
+          </legend>
+<div aria-label="Budget Range Filter" class="flex flex-wrap gap-space-xs" role="radiogroup">
+<button aria-checked="false" class="min-h-target-min px-space-md py-space-2xs rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary transition-colors" role="radio" type="button">
+              Under ₹35k
+            </button>
+<button aria-checked="true" class="min-h-target-min px-space-md py-space-2xs rounded-lg bg-secondary text-on-secondary font-label-md text-label-md shadow-sm focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary transition-colors" role="radio" type="button">
+              ₹35k - ₹50k (Active)
+            </button>
+<button aria-checked="false" class="min-h-target-min px-space-md py-space-2xs rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary transition-colors" role="radio" type="button">
+              ₹50k+
+            </button>
+</div>
+</fieldset>
+<!-- Bedrooms Filter -->
+<fieldset class="lg:col-span-3 p-0 m-0 border-0 flex flex-col gap-space-xs">
+<legend class="font-label-md text-label-md text-on-surface font-semibold mb-space-2xs">
+            Bedrooms Configuration
+          </legend>
+<div aria-label="Bedroom Filter" class="flex flex-wrap gap-space-xs" role="radiogroup">
+<button aria-checked="false" class="min-h-target-min px-space-md py-space-2xs rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary transition-colors" role="radio" type="button">
+              1 BHK
+            </button>
+<button aria-checked="true" class="min-h-target-min px-space-md py-space-2xs rounded-lg bg-secondary text-on-secondary font-label-md text-label-md shadow-sm focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary transition-colors" role="radio" type="button">
+              2 BHK (Active)
+            </button>
+<button aria-checked="false" class="min-h-target-min px-space-md py-space-2xs rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary transition-colors" role="radio" type="button">
+              3 BHK
+            </button>
+</div>
+</fieldset>
+<!-- Accessibility Essentials Checkboxes -->
+<fieldset class="lg:col-span-5 p-0 m-0 border-0 flex flex-col gap-space-xs">
+<legend class="font-label-md text-label-md text-on-surface font-semibold mb-space-2xs">
+            Physical Accessibility Criteria
+          </legend>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-xs">
+<label class="min-h-target-min flex items-center gap-space-xs px-space-xs py-space-2xs rounded-lg hover:bg-surface-container-low cursor-pointer">
+<input checked="" class="w-5 h-5 accent-secondary rounded focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary" type="checkbox">
+<span class="font-body-md text-body-md text-on-surface">Step-free Entrance</span>
+</label>
+<label class="min-h-target-min flex items-center gap-space-xs px-space-xs py-space-2xs rounded-lg hover:bg-surface-container-low cursor-pointer">
+<input checked="" class="w-5 h-5 accent-secondary rounded focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary" type="checkbox">
+<span class="font-body-md text-body-md text-on-surface">Working Elevator</span>
+</label>
+<label class="min-h-target-min flex items-center gap-space-xs px-space-xs py-space-2xs rounded-lg hover:bg-surface-container-low cursor-pointer">
+<input checked="" class="w-5 h-5 accent-secondary rounded focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary" type="checkbox">
+<span class="font-body-md text-body-md text-on-surface">Wide Doors (&gt;34")</span>
+</label>
+<label class="min-h-target-min flex items-center gap-space-xs px-space-xs py-space-2xs rounded-lg hover:bg-surface-container-low cursor-pointer">
+<input checked="" class="w-5 h-5 accent-secondary rounded focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary" type="checkbox">
+<span class="font-body-md text-body-md text-on-surface">Reserved Stilt Parking</span>
+</label>
+</div>
+</fieldset>
+</div>
+<!-- Live Match Summary Bar -->
+<div class="bg-surface-container-high rounded-lg p-space-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span aria-hidden="true" class="material-symbols-outlined text-secondary text-[22px]">tune</span>
+<p class="font-body-bold text-body-bold text-on-surface">
+            4 Accessible Homes Found — Ranked by WCAG &amp; Tenant Match
+          </p>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">
+          Sorted by: Physical Mobility Suitability
+        </span>
+</div>
+</section>
+<!-- SECTION 3: PROPERTY CARDS GRID -->
+<section aria-label="Available Accessible Properties List" class="w-full flex flex-col gap-space-lg">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">
+          Verified Match Results
+        </h2>
+<span class="font-label-md text-label-md text-on-surface-variant">
+          Showing 1 - 2 of 4 residences
+        </span>
+</div>
+<div class="grid grid-cols-1 xl:grid-cols-2 gap-space-lg items-start">
+<!-- CARD 1: Greenwood Heights -->
+<article aria-labelledby="prop-1-title" class="bg-surface-container-lowest rounded-xl shadow-md p-space-md md:p-space-lg flex flex-col gap-space-md">
+<!-- Card Header & Match Score -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-start justify-between gap-space-xs flex-wrap">
+<div>
+<span class="inline-block px-space-xs py-0.5 rounded bg-surface-container-high font-label-sm text-label-sm text-on-surface font-semibold mb-space-2xs">
+                  Voice command shortcut: “Select 104 Highland”
+                </span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface font-bold" id="prop-1-title">
+                  Greenwood Heights — Unit 402
+                </h3>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-1 mt-1">
+<span aria-hidden="true" class="material-symbols-outlined text-[18px] text-secondary">place</span>
+<span class="">12th Main Road, Indiranagar, Bengaluru</span>
+</p>
+</div>
+<!-- High-Contrast Match Badge with Visual Progress Ring -->
+<div aria-label="Accessibility match score 96 percent" class="flex items-center gap-space-xs bg-surface-container-low p-space-xs rounded-xl">
+<svg aria-hidden="true" class="w-12 h-12 shrink-0 -rotate-90" viewBox="0 0 36 36">
+<path class="text-surface-container-highest" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-secondary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="96, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold leading-tight">96%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Accessibility Match</span>
+</div>
+</div>
+</div>
+<!-- Match Explanation Text (WCAG cognitive support) -->
+<p class="p-space-xs rounded-lg bg-surface-container-low font-body-md text-body-md text-on-surface">
+<strong class="font-body-bold">AI Match Explanation:</strong> Strong match — meets zero-step entrance, 36-inch wide doorways, seamless generator power backup, and comes in ₹3,000 under budget.
+            </p>
+</div>
+<!-- Financial and Spatial Specs -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-xs bg-surface-container-high p-space-sm rounded-lg text-center">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Rent / Month</span>
+<span class="font-body-bold text-body-bold text-on-surface">₹42,000</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Security Deposit</span>
+<span class="font-body-bold text-body-bold text-on-surface">₹1,50,000</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Configuration</span>
+<span class="font-body-bold text-body-bold text-on-surface">2 BHK (1,250 sq.ft)</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Floor &amp; Access</span>
+<span class="font-body-bold text-body-bold text-on-surface">4th Fl. (Dual Lifts)</span>
+</div>
+</div>
+<!-- Verification Badges (Icon + Full Textual Description) -->
+<div aria-label="Verification and On-site Audit Status" class="flex flex-col gap-space-xs" role="region">
+<h4 class="font-label-md text-label-md text-on-surface font-bold uppercase tracking-wider">
+              Verification Audit Details
+            </h4>
+<!-- Verified -->
+<div class="flex items-start gap-space-xs p-space-xs rounded-lg bg-surface-container-low">
+<span aria-hidden="true" class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">check_circle</span>
+<div class="text-body-md font-body-md text-on-surface">
+<strong class="font-body-bold text-secondary">Verified Feature:</strong> Step-free entrance ramp and dual elevators operational — inspected on-site yesterday by Scout Field Agent.
+              </div>
+</div>
+<!-- Estimated -->
+<div class="flex items-start gap-space-xs p-space-xs rounded-lg bg-surface-container-low">
+<span aria-hidden="true" class="material-symbols-outlined text-outline text-[20px] shrink-0 mt-0.5">timelapse</span>
+<div class="text-body-md font-body-md text-on-surface">
+<strong class="font-body-bold text-on-surface">Estimated Metric:</strong> Commute to Manyata Tech Park: approx. 24–30 mins in peak morning traffic.
+              </div>
+</div>
+<!-- Not Verified -->
+<div class="flex items-start gap-space-xs p-space-xs rounded-lg bg-surface-container-low">
+<span aria-hidden="true" class="material-symbols-outlined text-error text-[20px] shrink-0 mt-0.5">help_outline</span>
+<div class="text-body-md font-body-md text-on-surface">
+<strong class="font-body-bold text-error">Unverified Information:</strong> Pet policy in society bylaws is unconfirmed; checking with owner.
+              </div>
+</div>
+</div>
+<!-- Text Alternatives for Neighborhood & Transit -->
+<div class="p-space-xs rounded-lg bg-surface-container flex flex-col gap-space-2xs">
+<h4 class="font-label-sm text-label-sm text-on-surface font-bold uppercase tracking-wide">
+              Pedestrian &amp; Transit Proximity (Flat Walkway Audit)
+            </h4>
+<ul class="list-none space-y-1 text-body-md font-body-md text-on-surface pl-0">
+<li class="flex items-center gap-space-xs">
+<span aria-hidden="true" class="material-symbols-outlined text-secondary text-[18px]">directions_subway</span>
+<span class=""><strong>Indiranagar Metro Station:</strong> 6-minute flat walk (450m, continuous paved sidewalk, audible signals).</span>
+</li>
+<li class="flex items-center gap-space-xs">
+<span aria-hidden="true" class="material-symbols-outlined text-secondary text-[18px]">local_hospital</span>
+<span class=""><strong>Emergency Medical Clinic:</strong> 3-minute walk (220m, zero street curb barriers).</span>
+</li>
+</ul>
+</div>
+<!-- Trust Citation -->
+<div class="text-label-sm font-label-sm text-on-surface-variant flex items-center gap-1">
+<span aria-hidden="true" class="material-symbols-outlined text-[16px]">verified_user</span>
+<span class="">RERA Registered Document: PRM/KA/RERA/1251 • Verified 18 Oct 2024</span>
+</div>
+<!-- Card Action Buttons (Min 44px hit targets) -->
+<div class="flex flex-col sm:flex-row flex-wrap gap-space-xs pt-space-xs border-t border-outline-variant">
+<button class="min-h-target-min px-space-md py-space-xs rounded-lg bg-secondary text-on-secondary hover:bg-primary-container font-body-bold text-body-bold focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary flex items-center justify-center gap-space-2xs transition-colors shadow-sm flex-1" onclick="prefillBooking('Greenwood Heights Unit 402')" type="button">
+<span aria-hidden="true" class="material-symbols-outlined text-[20px]">calendar_today</span>
+<span class="">Book site visit for Unit 402</span>
+</button>
+<button class="min-h-target-min px-space-md py-space-xs rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high font-body-bold text-body-bold focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary flex items-center justify-center gap-space-2xs transition-colors" type="button">
+<span aria-hidden="true" class="material-symbols-outlined text-[20px]">bookmark_add</span>
+<span class="">Save to Shortlist</span>
+</button>
+<button class="min-h-target-min px-space-sm py-space-xs rounded-lg bg-surface-container-low text-secondary hover:bg-surface-container font-label-md text-label-md focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary flex items-center justify-center gap-1 transition-colors" type="button">
+<span aria-hidden="true" class="material-symbols-outlined text-[18px]">description</span>
+<span class="">Audit Report (PDF)</span>
+</button>
+</div>
+</article>
+<!-- CARD 2: Salarpuria Silver Crest -->
+<article aria-labelledby="prop-2-title" class="bg-surface-container-lowest rounded-xl shadow-md p-space-md md:p-space-lg flex flex-col gap-space-md">
+<!-- Card Header & Match Score -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-start justify-between gap-space-xs flex-wrap">
+<div>
+<span class="inline-block px-space-xs py-0.5 rounded bg-surface-container-high font-label-sm text-label-sm text-on-surface font-semibold mb-space-2xs">
+                  Voice command shortcut: “Select Silver Crest”
+                </span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface font-bold" id="prop-2-title">
+                  Salarpuria Silver Crest — Unit 201
+                </h3>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-1 mt-1">
+<span aria-hidden="true" class="material-symbols-outlined text-[18px] text-secondary">place</span>
+<span class="">Defence Colony, Indiranagar, Bengaluru</span>
+</p>
+</div>
+<!-- High-Contrast Match Badge with Visual Progress Ring -->
+<div aria-label="Accessibility match score 92 percent" class="flex items-center gap-space-xs bg-surface-container-low p-space-xs rounded-xl">
+<svg aria-hidden="true" class="w-12 h-12 shrink-0 -rotate-90" viewBox="0 0 36 36">
+<path class="text-surface-container-highest" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-secondary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="92, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold leading-tight">92%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Accessibility Match</span>
+</div>
+</div>
+</div>
+<!-- Match Explanation Text -->
+<p class="p-space-xs rounded-lg bg-surface-container-low font-body-md text-body-md text-on-surface">
+<strong class="font-body-bold">AI Match Explanation:</strong> 92% Match — meets lift, covered parking, and wide corridors (42 inches clear throughout).
+            </p>
+</div>
+<!-- Financial and Spatial Specs -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-xs bg-surface-container-high p-space-sm rounded-lg text-center">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Rent / Month</span>
+<span class="font-body-bold text-body-bold text-on-surface">₹44,500</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Security Deposit</span>
+<span class="font-body-bold text-body-bold text-on-surface">₹1,80,000</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Configuration</span>
+<span class="font-body-bold text-body-bold text-on-surface">2 BHK (1,180 sq.ft)</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Floor &amp; Access</span>
+<span class="font-body-bold text-body-bold text-on-surface">2nd Fl. (Stretcher Lift)</span>
+</div>
+</div>
+<!-- Verification Badges -->
+<div aria-label="Silver Crest Audit Status" class="flex flex-col gap-space-xs" role="region">
+<h4 class="font-label-md text-label-md text-on-surface font-bold uppercase tracking-wider">
+              Verification Audit Details
+            </h4>
+<!-- Verified -->
+<div class="flex items-start gap-space-xs p-space-xs rounded-lg bg-surface-container-low">
+<span aria-hidden="true" class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">check_circle</span>
+<div class="text-body-md font-body-md text-on-surface">
+<strong class="font-body-bold text-secondary">Verified Feature:</strong> Dedicated covered stilt parking with 4-foot transfer clearance — verified 2 days ago.
+              </div>
+</div>
+<!-- Estimated -->
+<div class="flex items-start gap-space-xs p-space-xs rounded-lg bg-surface-container-low">
+<span aria-hidden="true" class="material-symbols-outlined text-outline text-[20px] shrink-0 mt-0.5">timelapse</span>
+<div class="text-body-md font-body-md text-on-surface">
+<strong class="font-body-bold text-on-surface">Estimated Metric:</strong> Electricity backup generator runs 24/7 for lifts and internal apartment circuits.
+              </div>
+</div>
+</div>
+<!-- Text Alternatives for Neighborhood & Transit -->
+<div class="p-space-xs rounded-lg bg-surface-container flex flex-col gap-space-2xs">
+<h4 class="font-label-sm text-label-sm text-on-surface font-bold uppercase tracking-wide">
+              Pedestrian &amp; Transit Proximity (Flat Walkway Audit)
+            </h4>
+<ul class="list-none space-y-1 text-body-md font-body-md text-on-surface pl-0">
+<li class="flex items-center gap-space-xs">
+<span aria-hidden="true" class="material-symbols-outlined text-secondary text-[18px]">directions_bus</span>
+<span class=""><strong>100 Feet Road Bus Stop:</strong> 4-minute walk (300m) with audible pedestrian crossing signal.</span>
+</li>
+<li class="flex items-center gap-space-xs">
+<span aria-hidden="true" class="material-symbols-outlined text-secondary text-[18px]">local_pharmacy</span>
+<span class=""><strong>All-Day Pharmacy:</strong> 2-minute flat walk (150m, direct paved lane).</span>
+</li>
+</ul>
+</div>
+<!-- Trust Citation -->
+<div class="text-label-sm font-label-sm text-on-surface-variant flex items-center gap-1">
+<span aria-hidden="true" class="material-symbols-outlined text-[16px]">verified_user</span>
+<span class="">RERA Registered Document: PRM/KA/RERA/0984 • Verified 21 Oct 2024</span>
+</div>
+<!-- Card Action Buttons -->
+<div class="flex flex-col sm:flex-row flex-wrap gap-space-xs pt-space-xs border-t border-outline-variant">
+<button class="min-h-target-min px-space-md py-space-xs rounded-lg bg-secondary text-on-secondary hover:bg-primary-container font-body-bold text-body-bold focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary flex items-center justify-center gap-space-2xs transition-colors shadow-sm flex-1" onclick="prefillBooking('Salarpuria Silver Crest Unit 201')" type="button">
+<span aria-hidden="true" class="material-symbols-outlined text-[20px]">calendar_today</span>
+<span class="">Book site visit for Silver Crest</span>
+</button>
+<button class="min-h-target-min px-space-md py-space-xs rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high font-body-bold text-body-bold focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary flex items-center justify-center gap-space-2xs transition-colors" type="button">
+<span aria-hidden="true" class="material-symbols-outlined text-[20px]">bookmark_add</span>
+<span class="">Save to Shortlist</span>
+</button>
+<button class="min-h-target-min px-space-sm py-space-xs rounded-lg bg-surface-container-low text-secondary hover:bg-surface-container font-label-md text-label-md focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary flex items-center justify-center gap-1 transition-colors" type="button">
+<span aria-hidden="true" class="material-symbols-outlined text-[18px]">description</span>
+<span class="">Audit Report (PDF)</span>
+</button>
+</div>
+</article>
+</div>
+</section>
+<!-- SECTION 4: INLINE BOOKING & APPOINTMENT MODAL / SECTION -->
+<section aria-labelledby="booking-heading" class="w-full bg-surface-container-lowest rounded-xl shadow-md p-space-md md:p-space-lg flex flex-col gap-space-lg" id="concierge-booking-section">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-bold" id="booking-heading">
+            Book an In-Person Site Visit with an Accessibility Concierge
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">
+            Every booking includes an accompanied walk-through checking ramp slopes, doorway widths, and elevator dimensions.
+          </p>
+</div>
+<!-- Voice shortcut prompt box -->
+<div class="bg-surface-container-low px-space-md py-space-xs rounded-xl flex items-center gap-space-xs self-start md:self-auto">
+<span aria-hidden="true" class="material-symbols-outlined text-secondary text-[22px]">mic</span>
+<span class="font-label-md text-label-md text-on-surface">
+            Or say: <strong>“Book tomorrow at 2 PM with Greenwood Heights”</strong>
+</span>
+</div>
+</div>
+<!-- Selected Property Focus -->
+<div class="p-space-xs rounded-lg bg-surface-container-high flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span aria-hidden="true" class="material-symbols-outlined text-secondary text-[20px]">home_work</span>
+<span class="font-body-bold text-body-bold text-on-surface">Currently Selected Property:</span>
+<span class="font-body-md text-body-md text-on-surface" id="selected-property-name">Greenwood Heights — Unit 402</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Concierge: Rahul Menon (Certified Access Specialist)</span>
+</div>
+<form class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg" id="booking-form" onsubmit="event.preventDefault(); handleBookingSubmit();">
+<!-- Slot Selection: Date & Time -->
+<div class="lg:col-span-6 flex flex-col gap-space-md">
+<!-- Date Radio Group -->
+<fieldset class="p-0 m-0 border-0 flex flex-col gap-space-xs">
+<legend class="font-label-md text-label-md text-on-surface font-semibold">
+              Select Inspection Date (Required)
+            </legend>
+<div aria-label="Visit Date Selector" class="grid grid-cols-1 sm:grid-cols-3 gap-space-xs" role="radiogroup">
+<button aria-checked="false" class="min-h-target-min px-space-md py-space-sm rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary text-center transition-colors" onclick="selectDate(this, 'Today, Oct 24')" role="radio" type="button">
+                Today, Oct 24
+              </button>
+<button aria-checked="true" class="min-h-target-min px-space-md py-space-sm rounded-lg bg-secondary text-on-secondary font-label-md text-label-md shadow-sm focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary text-center transition-colors" onclick="selectDate(this, 'Tomorrow, Oct 25')" role="radio" type="button">
+                Tomorrow, Oct 25 (Selected)
+              </button>
+<button aria-checked="false" class="min-h-target-min px-space-md py-space-sm rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary text-center transition-colors" onclick="selectDate(this, 'Saturday, Oct 26')" role="radio" type="button">
+                Saturday, Oct 26
+              </button>
+</div>
+</fieldset>
+<!-- Time Slot Radio Group -->
+<fieldset class="p-0 m-0 border-0 flex flex-col gap-space-xs">
+<legend class="font-label-md text-label-md text-on-surface font-semibold">
+              Select Time Slot (Required)
+            </legend>
+<div aria-label="Visit Time Slot Selector" class="grid grid-cols-2 sm:grid-cols-4 gap-space-xs" role="radiogroup">
+<button aria-checked="false" class="min-h-target-min px-space-xs py-space-sm rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary text-center transition-colors" onclick="selectTime(this, '10:30 AM')" role="radio" type="button">
+                10:30 AM
+              </button>
+<button aria-checked="true" class="min-h-target-min px-space-xs py-space-sm rounded-lg bg-secondary text-on-secondary font-label-md text-label-md shadow-sm focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary text-center transition-colors" onclick="selectTime(this, '2:00 PM')" role="radio" type="button">
+                2:00 PM (Selected)
+              </button>
+<button aria-checked="false" class="min-h-target-min px-space-xs py-space-sm rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary text-center transition-colors" onclick="selectTime(this, '4:30 PM')" role="radio" type="button">
+                4:30 PM
+              </button>
+<button aria-checked="false" class="min-h-target-min px-space-xs py-space-sm rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary text-center transition-colors" onclick="selectTime(this, '6:00 PM')" role="radio" type="button">
+                6:00 PM
+              </button>
+</div>
+</fieldset>
+<div class="p-space-xs rounded-lg bg-surface-container flex items-center gap-space-xs">
+<span aria-hidden="true" class="material-symbols-outlined text-secondary text-[20px]">accessible_forward</span>
+<span class="font-body-md text-body-md text-on-surface">Concierge brings laser measuring tool &amp; threshold level ramps for testing.</span>
+</div>
+</div>
+<!-- Form Details Input -->
+<div class="lg:col-span-6 flex flex-col gap-space-md">
+<div class="flex flex-col gap-space-2xs">
+<label class="font-label-md text-label-md text-on-surface font-semibold" for="book-full-name">
+              Full Name (required)
+            </label>
+<input aria-describedby="name-desc" class="min-h-target-min h-12 px-space-md rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary border border-outline-variant" id="book-full-name" name="fullname" required="" type="text" value="Patel E.">
+<span class="font-label-sm text-label-sm text-on-surface-variant" id="name-desc">
+              Required for society security clearance and visitor register pass.
+            </span>
+</div>
+<div class="flex flex-col gap-space-2xs">
+<label class="font-label-md text-label-md text-on-surface font-semibold" for="book-phone">
+              Mobile Phone Number for SMS updates (required)
+            </label>
+<input aria-describedby="phone-desc" class="min-h-target-min h-12 px-space-md rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary border border-outline-variant" id="book-phone" name="phone" required="" type="tel" value="+91 98765 43210">
+<span class="font-label-sm text-label-sm text-on-surface-variant" id="phone-desc">
+              We send direct SMS gate pass and emergency contact details for the agent.
+            </span>
+</div>
+<div class="flex flex-col gap-space-2xs">
+<div class="flex justify-between items-center">
+<label class="font-label-md text-label-md text-on-surface font-semibold" for="book-mobility-notes">
+                Specific Mobility or Accessibility Requirements (optional)
+              </label>
+<span class="font-label-sm text-label-sm text-on-surface-variant" id="char-count">54 / 200</span>
+</div>
+<textarea class="p-space-sm rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary border border-outline-variant resize-y" id="book-mobility-notes" maxlength="200" name="notes" oninput="document.getElementById('char-count').textContent = this.value.length + ' / 200';" rows="3">Requires power wheelchair turning clearance verification.</textarea>
+</div>
+<!-- Submit Button -->
+<button class="min-h-target-min h-12 w-full px-space-lg rounded-lg bg-secondary text-on-secondary hover:bg-primary-container font-body-bold text-body-bold focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-secondary flex items-center justify-center gap-space-xs shadow-md transition-colors" id="confirm-booking-btn" type="submit">
+<span aria-hidden="true" class="material-symbols-outlined text-[22px]">check_circle</span>
+<span id="booking-btn-text" class="">Confirm Booking for Tomorrow at 2:00 PM</span>
+</button>
+</div>
+</form>
+</section>
+<!-- SECTION 5: ACCESSIBILITY COMPLIANCE AUDIT FOOTER / BAR -->
+
+</div>
+</div>
+<script>
+  let isListening = false;
+  let selectedDateString = "Tomorrow, Oct 25";
+  let selectedTimeString = "2:00 PM";
+
+  const micBtn = document.getElementById("mic-toggle-btn");
+  const micLabel = document.getElementById("mic-label");
+  const micIcon = document.getElementById("mic-icon");
+  const voiceScreenreaderFeedback = document.getElementById("voice-screenreader-feedback");
+  const voiceEngineStatus = document.getElementById("voice-engine-status");
+  const statusPulse = document.getElementById("status-pulse");
+  const statusDot = document.getElementById("status-dot");
+
+  micBtn.addEventListener("click", () => {
+    isListening = !isListening;
+    if (isListening) {
+      micBtn.setAttribute("aria-pressed", "true");
+      micBtn.classList.remove("bg-secondary");
+      micBtn.classList.add("bg-error");
+      micLabel.textContent = "Listening... Click to stop";
+      micIcon.textContent = "stop_circle";
+      voiceEngineStatus.textContent = "Voice Engine: Listening...";
+      statusPulse.classList.remove("hidden");
+      statusPulse.classList.remove("bg-secondary");
+      statusPulse.classList.add("bg-error");
+      statusDot.classList.remove("bg-secondary");
+      statusDot.classList.add("bg-error");
+
+      voiceScreenreaderFeedback.textContent = "Microphone activated. Scout Assistant is listening. Speak your property criteria now.";
+    } else {
+      micBtn.setAttribute("aria-pressed", "false");
+      micBtn.classList.remove("bg-error");
+      micBtn.classList.add("bg-secondary");
+      micLabel.textContent = "Start speaking query";
+      micIcon.textContent = "mic";
+      voiceEngineStatus.textContent = "Voice Engine: Ready";
+      statusPulse.classList.add("hidden");
+      statusPulse.classList.remove("bg-error");
+      statusPulse.classList.add("bg-secondary");
+      statusDot.classList.remove("bg-error");
+      statusDot.classList.add("bg-secondary");
+
+      voiceScreenreaderFeedback.textContent = "Microphone deactivated. Voice processing complete.";
+    }
+  });
+
+  function clearTranscript() {
+    voiceScreenreaderFeedback.textContent = "Transcript cleared.";
+    const transcriptInputs = document.querySelectorAll("#voice-command-title ~ section .space-y-space-xs span.text-on-surface");
+    transcriptInputs.forEach(el => {
+      el.textContent = "—";
+    });
+  }
+
+  function simulateVoicePrompt() {
+    voiceScreenreaderFeedback.textContent = "Voice input retried. Listening for 2BHK criteria in Indiranagar.";
+    document.getElementById("direct-property-input").focus();
+  }
+
+  function prefillBooking(propertyName) {
+    document.getElementById("selected-property-name").textContent = propertyName;
+    const target = document.getElementById("concierge-booking-section");
+    target.scrollIntoView({ behavior: 'smooth' });
+    target.focus();
+    voiceScreenreaderFeedback.textContent = "Selected " + propertyName + " for booking. Switched to appointment selector.";
+  }
+
+  function selectDate(element, val) {
+    const parent = element.parentElement;
+    parent.querySelectorAll("[role='radio']").forEach(btn => {
+      btn.setAttribute("aria-checked", "false");
+      btn.classList.remove("bg-secondary", "text-on-secondary", "shadow-sm");
+      btn.classList.add("bg-surface-container", "text-on-surface");
+      if (btn.textContent.includes("(Selected)")) {
+        btn.textContent = btn.textContent.replace(" (Selected)", "");
+      }
+    });
+    element.setAttribute("aria-checked", "true");
+    element.classList.remove("bg-surface-container", "text-on-surface");
+    element.classList.add("bg-secondary", "text-on-secondary", "shadow-sm");
+    element.textContent = val + " (Selected)";
+    selectedDateString = val;
+    updateBookingBtn();
+  }
+
+  function selectTime(element, val) {
+    const parent = element.parentElement;
+    parent.querySelectorAll("[role='radio']").forEach(btn => {
+      btn.setAttribute("aria-checked", "false");
+      btn.classList.remove("bg-secondary", "text-on-secondary", "shadow-sm");
+      btn.classList.add("bg-surface-container", "text-on-surface");
+      if (btn.textContent.includes("(Selected)")) {
+        btn.textContent = btn.textContent.replace(" (Selected)", "");
+      }
+    });
+    element.setAttribute("aria-checked", "true");
+    element.classList.remove("bg-surface-container", "text-on-surface");
+    element.classList.add("bg-secondary", "text-on-secondary", "shadow-sm");
+    element.textContent = val + " (Selected)";
+    selectedTimeString = val;
+    updateBookingBtn();
+  }
+
+  function updateBookingBtn() {
+    const btnText = document.getElementById("booking-btn-text");
+    btnText.textContent = "Confirm Booking for " + selectedDateString.replace(" (Selected)", "") + " at " + selectedTimeString;
+  }
+
+  function handleBookingSubmit() {
+    const name = document.getElementById("book-full-name").value;
+    const prop = document.getElementById("selected-property-name").textContent;
+    alert("Site visit successfully confirmed for " + name + " at " + prop + " on " + selectedDateString.replace(" (Selected)", "") + " at " + selectedTimeString + ". An SMS gate pass has been dispatched.");
+    voiceScreenreaderFeedback.textContent = "Site visit confirmed for " + name + ". Check your mobile for access pass details.";
+  }
+</script></main></div>
+
+</body></html>

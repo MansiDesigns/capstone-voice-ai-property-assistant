@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: capstone-backend
+    env: python
+    buildCommand: "venv\\Scripts\\pip install -r backend/requirements.txt"
+    startCommand: "venv\\Scripts\\python -m uvicorn backend.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: STT_API_KEY
+        sync: false
+      - key: DB_USER
+        value: postgres
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_HOST
+        value: localhost
+      - key: DB_PORT
+        value: 5432
+      - key: DB_NAME
+        value: property_db

@@ -1,5 +1,5 @@
-import psycopg2
-from psycopg2.extras import RealDictCursor
+import sqlite3
+import os
 import os
 import chromadb
 from sentence_transformers import SentenceTransformer
@@ -16,13 +16,9 @@ _chroma_client = None
 _bge_model = None
 
 def get_db_connection():
-    return psycopg2.connect(
-        dbname=os.getenv('DB_NAME', 'property_db'),
-        user=os.getenv('DB_USER', 'postgres'),
-        password=os.getenv('DB_PASSWORD', 'postgres'),
-        host=os.getenv('DB_HOST', 'localhost'),
-        port=os.getenv('DB_PORT', '5432')
-    )
+    conn = sqlite3.connect('property_db.sqlite')
+    conn.row_factory = sqlite3.Row
+    return conn
 
 def get_chroma_client():
     global _chroma_client
@@ -47,16 +43,16 @@ def search_properties(budget: int = None, bhk: str = None, area: str = None):
     """
     try:
         conn = get_db_connection()
-        cursor = conn.cursor(cursor_factory=RealDictCursor)
+        cursor = conn.cursor()
         
         query = "SELECT * FROM properties WHERE 1=1"
         params = []
         
         if budget:
-            query += " AND rent_amount <= %s"
+            query += " AND rent_amount <= ?"
             params.append(budget)
         if bhk:
-            query += " AND bhk = %s"
+            query += " AND bhk = ?"
             params.append(str(bhk))
             
         query += " LIMIT 5"

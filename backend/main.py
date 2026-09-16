@@ -60,67 +60,39 @@ async def chat_endpoint(req: ChatRequest):
     return ChatResponse(response=reply, session_id=session_id)
 
 from fastapi import FastAPI, HTTPException, UploadFile, File
+from fastapi.responses import Response
 import os
 import requests
+from groq import AsyncGroq
 
 @app.post("/transcribe")
 async def transcribe_audio(audio: UploadFile = File(...)):
-    stt_key = os.getenv("STT_API_KEY")
+    stt_key = os.getenv("GROQ_API_KEY")
     if not stt_key:
-        raise HTTPException(status_code=500, detail="STT_API_KEY not configured")
+        raise HTTPException(status_code=500, detail="GROQ_API_KEY not configured")
         
-    # Read the audio file
-    audio_data = await audio.read()
-    
-    # We will try Deepgram as the primary 40-hex key provider
-    # If it fails, fallback to HuggingFace
-    headers = {
-        "Authorization": f"Token {stt_key}",
-        "Content-Type": audio.content_type or "audio/webm"
-    }
-    
     try:
-        # Deepgram API
-        response = requests.post(
-            "https://api.deepgram.com/v1/listen?model=nova-2&smart_format=true",
-            headers=headers,
-            data=audio_data,
-            timeout=10
+        audio_data = await audio.read()
+        client = AsyncGroq(api_key=stt_key)
+        transcription = await client.audio.transcriptions.create(
+            file=(audio.filename, audio_data),
+            model="whisper-large-v3-turbo",
         )
-        if response.status_code == 200:
-            result = response.json()
-            transcript = result.get("results", {}).get("channels", [{}])[0].get("alternatives", [{}])[0].get("transcript", "")
-            return {"transcript": transcript}
-            
-        # Fallback to HuggingFace if not Deepgram
-        hf_headers = {"Authorization": f"Bearer {stt_key}"}
-        hf_response = requests.post(
-            "https://api-inference.huggingface.co/models/openai/whisper-large-v3-turbo",
-            headers=hf_headers,
-            data=audio_data,
-            timeout=15
-        )
-        if hf_response.status_code == 200:
-            return {"transcript": hf_response.json().get("text", "")}
-            
-        raise HTTPException(status_code=500, detail=f"STT Error: {response.text}")
-        
+        return {"transcript": transcription.text}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
-from fastapi.responses import StreamingResponse
 
 class TTSRequest(BaseModel):
     text: str
 
 @app.post("/tts")
 async def text_to_speech(req: TTSRequest):
-    stt_key = os.getenv("STT_API_KEY")
-    if not stt_key:
-        raise HTTPException(status_code=500, detail="STT_API_KEY not configured")
+    tts_key = os.getenv("TTS_API_KEY")
+    if not tts_key:
+        raise HTTPException(status_code=500, detail="TTS_API_KEY not configured")
         
     headers = {
-        "Authorization": f"Token {stt_key}",
+        "Authorization": f"Token {tts_key}",
         "Content-Type": "application/json"
     }
     
@@ -131,11 +103,10 @@ async def text_to_speech(req: TTSRequest):
             "https://api.deepgram.com/v1/speak?model=aura-asteria-en",
             headers=headers,
             json=payload,
-            timeout=10,
-            stream=True
+            timeout=10
         )
         if response.status_code == 200:
-            return StreamingResponse(response.iter_content(chunk_size=1024), media_type="audio/mpeg")
+            return Response(content=response.content, media_type="audio/mpeg")
         else:
             raise HTTPException(status_code=500, detail=f"TTS Error: {response.text}")
     except Exception as e:

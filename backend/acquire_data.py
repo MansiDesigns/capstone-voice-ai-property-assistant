@@ -1,5 +1,5 @@
 import os
-import psycopg2
+import sqlite3
 import urllib.request
 import json
 import ssl
@@ -30,13 +30,7 @@ def fetch_data():
         return []
 
 def init_db():
-    conn = psycopg2.connect(
-        dbname=os.getenv('DB_NAME', 'property_db'),
-        user=os.getenv('DB_USER', 'postgres'),
-        password=os.getenv('DB_PASSWORD', 'postgres'),
-        host=os.getenv('DB_HOST', 'localhost'),
-        port=os.getenv('DB_PORT', '5432')
-    )
+    conn = sqlite3.connect('property_db.sqlite')
     cursor = conn.cursor()
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS properties (
@@ -73,7 +67,7 @@ def load_data(conn, data):
         cursor.execute('''
             INSERT INTO properties 
             (id, lat, lng, rent_amount, bhk, sqft, furnished, gated, society, feedback, occupant_type, available_from)
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ON CONFLICT (id) DO UPDATE SET
                 lat=EXCLUDED.lat, lng=EXCLUDED.lng, rent_amount=EXCLUDED.rent_amount,
                 bhk=EXCLUDED.bhk, sqft=EXCLUDED.sqft, furnished=EXCLUDED.furnished,
